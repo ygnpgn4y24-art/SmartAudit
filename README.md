@@ -46,7 +46,7 @@ Follow these steps to run the application locally.
 Prerequisites
 Python 3.10+
 
-An OpenAI API Key
+A Google Gemini API Key
 
 Installation
 Clone the repository:
@@ -68,11 +68,9 @@ pip install -r requirements.txt
 
 Set up your environment variables:
 
-Create a file named .env in the root of the project.
+Copy `env.example` to `.env` in the root of the project and add your key:
 
-Add your OpenAI API key to it:
-
-OPENAI_API_KEY="sk-..."
+GOOGLE_API_KEY="..."
 
 Build the Knowledge Base
 Before running the app for the first time, you must build the vector store from the knowledge base files.

@@ -3,3 +3,1312 @@
 2025-08-30 13:11:26 - auditor_logger - INFO - Split 79 documents into 434 chunks.
 2025-08-30 13:11:26 - auditor_logger - INFO - Creating embeddings and building the FAISS index. This may take a few moments...
 2025-08-30 13:11:36 - auditor_logger - INFO - Vector store successfully built and saved to 'faiss_index'
+2025-12-09 19:21:30 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-09 19:21:30 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-09 19:21:31 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-09 19:21:31 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-09 19:23:05 - auditor_logger - INFO - New submission received. Input length: 484.
+2025-12-09 19:23:05 - auditor_logger - INFO - Running heuristic checks...
+2025-12-09 19:23:05 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-09 19:23:05 - auditor_logger - INFO - Starting AI analysis for code snippet of length 484.
+2025-12-09 19:23:05 - auditor_logger - INFO - Analyzing function 1/2: transfer_money
+2025-12-09 19:23:08 - auditor_logger - ERROR - Error analyzing function transfer_money: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-09 19:23:08 - auditor_logger - INFO - Analyzing function 2/2: transfer_view
+2025-12-09 19:23:09 - auditor_logger - ERROR - Error analyzing function transfer_view: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-09 19:23:09 - auditor_logger - INFO - AI analysis completed.
+2025-12-09 19:29:25 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-09 19:29:25 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-09 19:29:25 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-09 19:29:25 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-09 19:30:03 - auditor_logger - INFO - New submission received. Input length: 473.
+2025-12-09 19:30:03 - auditor_logger - INFO - Running heuristic checks...
+2025-12-09 19:30:03 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-09 19:30:03 - auditor_logger - INFO - Starting AI analysis for code snippet of length 473.
+2025-12-09 19:30:03 - auditor_logger - INFO - Analyzing function 1/2: transfer_money
+2025-12-09 19:30:03 - auditor_logger - ERROR - Error analyzing function transfer_money: Error code: 401 - {'error': {'message': 'Incorrect API key provided: AIzaSyC2***************************UZTk. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: AIzaSyC2***************************UZTk. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-09 19:30:03 - auditor_logger - INFO - Analyzing function 2/2: transfer_view
+2025-12-09 19:30:04 - auditor_logger - ERROR - Error analyzing function transfer_view: Error code: 401 - {'error': {'message': 'Incorrect API key provided: AIzaSyC2***************************UZTk. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: AIzaSyC2***************************UZTk. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-09 19:30:04 - auditor_logger - INFO - AI analysis completed.
+2025-12-09 19:35:58 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-09 19:35:58 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-09 19:35:58 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-09 19:35:58 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-09 19:36:21 - auditor_logger - INFO - New submission received. Input length: 473.
+2025-12-09 19:36:21 - auditor_logger - INFO - Running heuristic checks...
+2025-12-09 19:36:21 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-09 19:36:21 - auditor_logger - INFO - Starting AI analysis for code snippet of length 473.
+2025-12-09 19:36:21 - auditor_logger - INFO - Analyzing function 1/2: transfer_money
+2025-12-09 19:36:22 - auditor_logger - ERROR - Error analyzing function transfer_money: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-BUYX7***************************************JrOZ. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-BUYX7***************************************JrOZ. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}}
+2025-12-09 19:36:22 - auditor_logger - INFO - Analyzing function 2/2: transfer_view
+2025-12-09 19:36:22 - auditor_logger - ERROR - Error analyzing function transfer_view: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-BUYX7***************************************JrOZ. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-BUYX7***************************************JrOZ. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}}
+2025-12-09 19:36:22 - auditor_logger - INFO - AI analysis completed.
+2025-12-09 19:43:44 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-09 19:43:44 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-09 19:43:44 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-09 19:43:44 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-09 19:44:09 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-09 19:44:09 - auditor_logger - INFO - Running heuristic checks...
+2025-12-09 19:44:09 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-09 19:44:09 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-09 19:44:09 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-09 19:44:10 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: Error code: 401 - {'error': {'message': 'Incorrect API key provided: .... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: .... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-09 19:44:10 - auditor_logger - INFO - AI analysis completed.
+2025-12-09 19:46:53 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-09 19:46:53 - auditor_logger - INFO - Running heuristic checks...
+2025-12-09 19:46:53 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-09 19:46:53 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-09 19:46:53 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-09 19:46:53 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: Error code: 401 - {'error': {'message': 'Incorrect API key provided: .... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: .... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-09 19:46:53 - auditor_logger - INFO - AI analysis completed.
+2025-12-09 19:47:11 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-09 19:47:11 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-09 19:47:11 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-09 19:47:11 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-09 19:47:25 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-09 19:47:25 - auditor_logger - INFO - Running heuristic checks...
+2025-12-09 19:47:25 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-09 19:47:25 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-09 19:47:25 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-09 19:47:25 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: Error code: 401 - {'error': {'message': 'Incorrect API key provided: .... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: .... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-09 19:47:25 - auditor_logger - INFO - AI analysis completed.
+2025-12-09 19:56:32 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-09 19:56:32 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-09 19:56:32 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-09 19:56:32 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-09 19:56:40 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-09 19:56:40 - auditor_logger - INFO - Running heuristic checks...
+2025-12-09 19:56:40 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-09 19:56:40 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-09 19:56:40 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-09 19:56:41 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-ZkFRo***************************************A354. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}}
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 639, in embed_query
+    return self.embed_documents([text], **kwargs)[0]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 591, in embed_documents
+    return self._get_len_safe_embeddings(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 479, in _get_len_safe_embeddings
+    response = self.client.create(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/resources/embeddings.py", line 132, in create
+    return self._post(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-ZkFRo***************************************A354. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}}
+2025-12-09 19:56:41 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:31:34 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-10 19:31:34 - auditor_logger - INFO - Starting the vector store build process...
+2025-12-10 19:31:34 - auditor_logger - INFO - Split 79 documents into 434 chunks.
+2025-12-10 19:31:34 - auditor_logger - INFO - Creating embeddings and building the FAISS index. This may take a few moments...
+2025-12-10 19:31:34 - auditor_logger - CRITICAL - Failed to create embeddings or build FAISS index: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+]
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 227, in embed_documents
+    result = self.client.batch_embed_contents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 1365, in batch_embed_contents
+    response = rpc(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/rag_core.py", line 49, in build_and_save_vector_store
+    vector_store = FAISS.from_documents(chunks, embeddings)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 848, in from_documents
+    return cls.from_texts(texts, embedding, metadatas=metadatas, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 1043, in from_texts
+    embeddings = embedding.embed_documents(texts)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 231, in embed_documents
+    raise GoogleGenerativeAIError(f"Error embedding content: {e}") from e
+langchain_google_genai._common.GoogleGenerativeAIError: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+]
+2025-12-10 19:32:43 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-10 19:32:43 - auditor_logger - INFO - Starting the vector store build process...
+2025-12-10 19:32:43 - auditor_logger - INFO - Split 79 documents into 434 chunks.
+2025-12-10 19:32:43 - auditor_logger - INFO - Creating embeddings and building the FAISS index. This may take a few moments...
+2025-12-10 19:32:43 - auditor_logger - CRITICAL - Failed to create embeddings or build FAISS index: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+]
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 227, in embed_documents
+    result = self.client.batch_embed_contents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 1365, in batch_embed_contents
+    response = rpc(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/rag_core.py", line 49, in build_and_save_vector_store
+    vector_store = FAISS.from_documents(chunks, embeddings)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 848, in from_documents
+    return cls.from_texts(texts, embedding, metadatas=metadatas, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 1043, in from_texts
+    embeddings = embedding.embed_documents(texts)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 231, in embed_documents
+    raise GoogleGenerativeAIError(f"Error embedding content: {e}") from e
+langchain_google_genai._common.GoogleGenerativeAIError: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+]
+2025-12-10 19:33:03 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-10 19:33:04 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-10 19:33:04 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-10 19:33:04 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-10 19:33:20 - auditor_logger - INFO - New submission received. Input length: 1192.
+2025-12-10 19:33:20 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:33:20 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:33:20 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1192.
+2025-12-10 19:33:20 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:33:20 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+]
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 227, in embed_documents
+    result = self.client.batch_embed_contents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 1365, in batch_embed_contents
+    response = rpc(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 256, in embed_query
+    return self.embed_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 231, in embed_documents
+    raise GoogleGenerativeAIError(f"Error embedding content: {e}") from e
+langchain_google_genai._common.GoogleGenerativeAIError: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+]
+2025-12-10 19:33:20 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:37:07 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-10 19:37:07 - auditor_logger - INFO - Starting the vector store build process...
+2025-12-10 19:37:07 - auditor_logger - INFO - Split 79 documents into 434 chunks.
+2025-12-10 19:37:07 - auditor_logger - INFO - Creating embeddings and building the FAISS index. This may take a few moments...
+2025-12-10 19:37:07 - auditor_logger - CRITICAL - Failed to create embeddings or build FAISS index: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+]
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 227, in embed_documents
+    result = self.client.batch_embed_contents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 1365, in batch_embed_contents
+    response = rpc(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/rag_core.py", line 49, in build_and_save_vector_store
+    vector_store = FAISS.from_documents(chunks, embeddings)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 848, in from_documents
+    return cls.from_texts(texts, embedding, metadatas=metadatas, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 1043, in from_texts
+    embeddings = embedding.embed_documents(texts)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 231, in embed_documents
+    raise GoogleGenerativeAIError(f"Error embedding content: {e}") from e
+langchain_google_genai._common.GoogleGenerativeAIError: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+]
+2025-12-10 19:37:36 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-10 19:37:36 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-10 19:37:36 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-10 19:37:36 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-10 19:37:46 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:37:46 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:37:46 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:37:46 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:37:46 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:37:47 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+]
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 227, in embed_documents
+    result = self.client.batch_embed_contents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 1365, in batch_embed_contents
+    response = rpc(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 515, in similarity_search_with_score
+    embedding = self._embed_query(query)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 266, in _embed_query
+    return self.embedding_function.embed_query(text)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 256, in embed_query
+    return self.embed_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/embeddings.py", line 231, in embed_documents
+    raise GoogleGenerativeAIError(f"Error embedding content: {e}") from e
+langchain_google_genai._common.GoogleGenerativeAIError: Error embedding content: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0
+* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 0 [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerMinutePerUserPerProjectPerModel-FreeTier"
+}
+violations {
+  quota_metric: "generativelanguage.googleapis.com/embed_content_free_tier_requests"
+  quota_id: "EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier"
+}
+]
+2025-12-10 19:37:47 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:46:18 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:46:18 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:46:18 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:46:18 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:46:19 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:46:19 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: 
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 516, in similarity_search_with_score
+    docs = self.similarity_search_with_score_by_vector(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 417, in similarity_search_with_score_by_vector
+    scores, indices = self.index.search(vector, k if filter is None else fetch_k)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/faiss/class_wrappers.py", line 349, in replacement_search
+    assert d == self.d
+AssertionError
+2025-12-10 19:46:19 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:46:20 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:46:20 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:46:20 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:46:20 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:46:20 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:46:21 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: 
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 516, in similarity_search_with_score
+    docs = self.similarity_search_with_score_by_vector(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 417, in similarity_search_with_score_by_vector
+    scores, indices = self.index.search(vector, k if filter is None else fetch_k)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/faiss/class_wrappers.py", line 349, in replacement_search
+    assert d == self.d
+AssertionError
+2025-12-10 19:46:21 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:46:27 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:46:27 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:46:27 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:46:27 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:46:27 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:46:27 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: 
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 516, in similarity_search_with_score
+    docs = self.similarity_search_with_score_by_vector(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 417, in similarity_search_with_score_by_vector
+    scores, indices = self.index.search(vector, k if filter is None else fetch_k)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/faiss/class_wrappers.py", line 349, in replacement_search
+    assert d == self.d
+AssertionError
+2025-12-10 19:46:27 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:46:28 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:46:28 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:46:28 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:46:28 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:46:28 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:46:28 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:46:28 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:46:28 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:46:28 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:46:28 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: 
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 516, in similarity_search_with_score
+    docs = self.similarity_search_with_score_by_vector(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 417, in similarity_search_with_score_by_vector
+    scores, indices = self.index.search(vector, k if filter is None else fetch_k)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/faiss/class_wrappers.py", line 349, in replacement_search
+    assert d == self.d
+AssertionError
+2025-12-10 19:46:28 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:46:28 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:46:28 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: 
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 516, in similarity_search_with_score
+    docs = self.similarity_search_with_score_by_vector(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 417, in similarity_search_with_score_by_vector
+    scores, indices = self.index.search(vector, k if filter is None else fetch_k)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/faiss/class_wrappers.py", line 349, in replacement_search
+    assert d == self.d
+AssertionError
+2025-12-10 19:46:28 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:46:29 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:46:29 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:46:29 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:46:29 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:46:29 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:46:29 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: 
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 516, in similarity_search_with_score
+    docs = self.similarity_search_with_score_by_vector(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 417, in similarity_search_with_score_by_vector
+    scores, indices = self.index.search(vector, k if filter is None else fetch_k)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/faiss/class_wrappers.py", line 349, in replacement_search
+    assert d == self.d
+AssertionError
+2025-12-10 19:46:29 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:46:30 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:46:30 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:46:30 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:46:30 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:46:30 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:46:30 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: 
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 156, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 278, in _get_docs
+    return self.retriever.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/retrievers.py", line 261, in invoke
+    result = self._get_relevant_documents(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/vectorstores/base.py", line 1080, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **kwargs_)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 643, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 516, in similarity_search_with_score
+    docs = self.similarity_search_with_score_by_vector(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 417, in similarity_search_with_score_by_vector
+    scores, indices = self.index.search(vector, k if filter is None else fetch_k)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/faiss/class_wrappers.py", line 349, in replacement_search
+    assert d == self.d
+AssertionError
+2025-12-10 19:46:30 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:49:02 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-10 19:49:03 - auditor_logger - INFO - Starting the vector store build process...
+2025-12-10 19:49:03 - auditor_logger - INFO - Split 79 documents into 434 chunks.
+2025-12-10 19:49:03 - auditor_logger - INFO - Creating embeddings and building the FAISS index. This may take a few moments...
+2025-12-10 19:49:15 - auditor_logger - INFO - Vector store successfully built and saved to 'faiss_index'
+2025-12-10 19:49:30 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-10 19:49:30 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-10 19:49:30 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-10 19:49:30 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-10 19:49:40 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:49:40 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:49:40 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:49:40 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:49:40 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:49:42 - auditor_logger - ERROR - Error analyzing function Full Snippet Analysis: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Traceback (most recent call last):
+  File "/Users/pengyawen/ai-smart-contract-auditor/src/logic.py", line 96, in analyze_code_with_ai
+    response = qa_chain.invoke({"query": query})
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/retrieval_qa/base.py", line 159, in _call
+    answer = self.combine_documents_chain.run(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/_api/deprecation.py", line 190, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 632, in run
+    return self(kwargs, callbacks=callbacks, tags=tags, metadata=metadata)[
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/_api/deprecation.py", line 190, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 410, in __call__
+    return self.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/combine_documents/base.py", line 143, in _call
+    output, extra_return_dict = self.combine_docs(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/combine_documents/stuff.py", line 263, in combine_docs
+    return self.llm_chain.predict(callbacks=callbacks, **inputs), {}
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/llm.py", line 325, in predict
+    return self(kwargs, callbacks=callbacks)[self.output_key]
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/_api/deprecation.py", line 190, in warning_emitting_wrapper
+    return wrapped(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 410, in __call__
+    return self.invoke(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/base.py", line 165, in invoke
+    self._call(inputs, run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/llm.py", line 127, in _call
+    response = self.generate([inputs], run_manager=run_manager)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain/chains/llm.py", line 139, in generate
+    return self.llm.generate_prompt(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/language_models/chat_models.py", line 1019, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/language_models/chat_models.py", line 837, in generate
+    self._generate_with_cache(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_core/language_models/chat_models.py", line 1085, in _generate_with_cache
+    result = self._generate(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/chat_models.py", line 980, in _generate
+    response: GenerateContentResponse = _chat_with_retry(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/chat_models.py", line 205, in _chat_with_retry
+    return _chat_with_retry(**kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/tenacity/__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/concurrent/futures/_base.py", line 438, in result
+    return self.__get_result()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/concurrent/futures/_base.py", line 390, in __get_result
+    raise self._exception
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/chat_models.py", line 203, in _chat_with_retry
+    raise e
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/langchain_google_genai/chat_models.py", line 187, in _chat_with_retry
+    return generation_method(**kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/ai/generativelanguage_v1beta/services/generative_service/client.py", line 827, in generate_content
+    response = rpc(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+  File "/Users/pengyawen/ai-smart-contract-auditor/.venv/lib/python3.9/site-packages/google/api_core/grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-12-10 19:49:42 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:56:38 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-10 19:56:38 - auditor_logger - INFO - Starting the vector store build process...
+2025-12-10 19:56:38 - auditor_logger - INFO - Split 79 documents into 434 chunks.
+2025-12-10 19:56:38 - auditor_logger - INFO - Creating embeddings and building the FAISS index. This may take a few moments...
+2025-12-10 19:56:50 - auditor_logger - INFO - Vector store successfully built and saved to 'faiss_index'
+2025-12-10 19:57:09 - auditor_logger - INFO - Logger initialized successfully.
+2025-12-10 19:57:09 - auditor_logger - INFO - Attempting to initialize the QA chain...
+2025-12-10 19:57:09 - auditor_logger - INFO - FAISS index loaded successfully.
+2025-12-10 19:57:09 - auditor_logger - INFO - QA chain initialized successfully.
+2025-12-10 19:57:19 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:57:19 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:57:19 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:57:19 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:57:19 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:57:30 - auditor_logger - INFO - AI analysis completed.
+2025-12-10 19:58:54 - auditor_logger - INFO - New submission received. Input length: 1191.
+2025-12-10 19:58:54 - auditor_logger - INFO - Running heuristic checks...
+2025-12-10 19:58:54 - auditor_logger - INFO - Heuristic checks found 1 alert(s).
+2025-12-10 19:58:54 - auditor_logger - INFO - Starting AI analysis for code snippet of length 1191.
+2025-12-10 19:58:54 - auditor_logger - INFO - Analyzing function 1/1: Full Snippet Analysis
+2025-12-10 19:59:05 - auditor_logger - INFO - AI analysis completed.

@@ -1,11 +1,14 @@
 import os
 import re
+from typing import Any, Callable, Dict, Optional
+
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
+
 from src.parser import parse_solidity_code
 from src.logger_config import logger
 
@@ -76,9 +79,28 @@ def initialize_qa_chain(index_path="faiss_index"):
         st.error(f"Failed to initialize the QA chain. See auditor.log for details.")
         return None
 
-def analyze_code_with_ai(qa_chain, code):
+def analyze_code_with_ai(
+    qa_chain: Any,
+    code: str,
+    *,
+    on_function_analyzed: Optional[Callable[[Dict[str, Any]], None]] = None,
+) -> str:
     """
     Parses the code into functions and analyzes each function individually for vulnerabilities.
+
+    If `on_function_analyzed` is provided, it will be called after each function
+    is analyzed with a payload of the form:
+
+    {
+        "function_name": str,
+        "source_code": str,
+        "markdown_report": str,
+        "raw_response": Any,
+    }
+
+    This hook is used by `src.audit_service` to persist structured audit data
+    without breaking the existing Streamlit interface, which only needs the
+    concatenated Markdown report string.
     """
     logger.info(f"Starting AI analysis for code snippet of length {len(code)}.")
     functions_to_analyze = parse_solidity_code(code)
@@ -90,16 +112,35 @@ def analyze_code_with_ai(qa_chain, code):
          return "Could not parse the Solidity code. Please provide a valid contract or function."
 
     for i, func in enumerate(functions_to_analyze):
-        logger.info(f"Analyzing function {i+1}/{len(functions_to_analyze)}: {func['name']}")
+        func_name = func["name"]
+        logger.info(f"Analyzing function {i+1}/{len(functions_to_analyze)}: {func_name}")
         query = f"Analyze this Solidity code for security vulnerabilities: \n```solidity\n{func['code']}\n```"
         try:
             response = qa_chain.invoke({"query": query})
-            full_analysis += f"## Analysis for: `{func['name']}`\n\n"
-            full_analysis += response["result"]
+            markdown_report = response["result"]
+
+            full_analysis += f"## Analysis for: `{func_name}`\n\n"
+            full_analysis += markdown_report
             full_analysis += "\n\n---\n\n"
+
+            if on_function_analyzed is not None:
+                payload: Dict[str, Any] = {
+                    "function_name": func_name,
+                    "source_code": func["code"],
+                    "markdown_report": markdown_report,
+                    "raw_response": response,
+                }
+                try:
+                    on_function_analyzed(payload)
+                except Exception as callback_err:  # pragma: no cover - defensive logging
+                    logger.error(
+                        "on_function_analyzed callback raised an exception: %s",
+                        callback_err,
+                        exc_info=True,
+                    )
         except Exception as e:
-            logger.error(f"Error analyzing function {func['name']}: {e}", exc_info=True)
-            full_analysis += f"## Analysis for: `{func['name']}`\n\n> An error occurred during the analysis of this function. Please check the logs.\n\n"
+            logger.error(f"Error analyzing function {func_name}: {e}", exc_info=True)
+            full_analysis += f"## Analysis for: `{func_name}`\n\n> An error occurred during the analysis of this function. Please check the logs.\n\n"
 
     logger.info("AI analysis completed.")
     return full_analysis

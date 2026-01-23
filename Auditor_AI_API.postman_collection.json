@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "auditor-ai-api-collection",
+		"name": "Auditor AI API",
+		"description": "Complete API collection for Auditor AI smart contract security assistant. Includes authentication, audit, and statistics endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"test@example.com\",\n  \"password\": \"securepassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Register a new user account. Returns user information upon success."
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"access_token\", jsonData.access_token);",
+									"    pm.environment.set(\"user_id\", jsonData.user_id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"securepassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Authenticate user and obtain JWT access token. The token is automatically saved to the environment variable 'access_token' for use in subsequent requests."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for user registration and authentication."
+		},
+		{
+			"name": "Audits",
+			"item": [
+				{
+					"name": "Create Audit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"raw_input\": \"pragma solidity ^0.8.0;\\n\\ncontract VulnerableContract {\\n    mapping(address => uint256) public balances;\\n    \\n    function withdraw(uint256 amount) public {\\n        require(balances[msg.sender] >= amount);\\n        (bool success, ) = msg.sender.call{value: amount}(\\\"\\\");\\n        require(success, \\\"Failed to send Ether\\\");\\n        balances[msg.sender] -= amount;\\n    }\\n}\",\n  \"target_name\": \"VulnerableContract\",\n  \"extra_metadata\": {\n    \"network\": \"Ethereum\",\n    \"compiler_version\": \"0.8.0\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/audits",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"audits"
+							]
+						},
+						"description": "Create a new audit for Solidity code. Requires authentication. Returns a full audit report with vulnerability analysis."
+					},
+					"response": []
+				},
+				{
+					"name": "List Audits",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/audits?limit=50&offset=0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"audits"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "50",
+									"description": "Maximum number of audits to return"
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Number of audits to skip for pagination"
+								}
+							]
+						},
+						"description": "List audit summaries for the authenticated user. Supports pagination via limit and offset parameters."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Audit Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/audits/{{audit_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"audits",
+								"{{audit_id}}"
+							],
+							"variable": [
+								{
+									"key": "audit_id",
+									"value": "",
+									"description": "The ID of the audit report to retrieve"
+								}
+							]
+						},
+						"description": "Get a full audit report by ID. The audit must belong to the authenticated user."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for creating and managing audit reports. All endpoints require authentication."
+		},
+		{
+			"name": "Statistics",
+			"item": [
+				{
+					"name": "Get Stats Summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stats/summary",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"stats",
+								"summary"
+							]
+						},
+						"description": "Get high-level statistics for the authenticated user's audits, including total count, recent activity, and severity distribution."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for retrieving audit statistics and analytics."
+		},
+		{
+			"name": "Meta",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						},
+						"description": "Simple health check endpoint to verify the API is running."
+					},
+					"response": []
+				}
+			],
+			"description": "Utility endpoints for API status and metadata."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}
